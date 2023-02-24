@@ -70,12 +70,39 @@ input {
     margin-bottom: 10px;
 }
 
+#dok-btn {
+    padding: 5px;
+    margin: 6px;
+    color: #FFF;
+    background-color: #4bc970;
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid #3ac162;
+    border-width: 1px 1px 3px;
+    box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.1) inset;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.dok-div {
+    padding: 6px;
+    margin: 6px;
+    background-color: #5ca171;
+    width: fit-content;
+    border-radius: 5px;
+}
+
+.dok-p {
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+
 label {
     display: block;
     margin-bottom: 8px;
 }
 
-.dugme:hover {
+.dugme:hover, #dok-btn:hover {
     cursor: pointer;
     background-color: #17c54b;
 }

@@ -21,11 +21,11 @@
     ?>
 
     <?php foreach($doktori AS $doktor) { ?>
-        <div>
-            <p><?php echo "Ime doktora: " . $doktor['ime'] . " " . $doktor['prezime']; ?></p>
-            <p><?php echo "Email: " . $doktor['email']; ?></p>
+        <div class="dok-div">
+            <p class="dok-p"><?php echo "Ime doktora: " . $doktor['ime'] . " " . $doktor['prezime']; ?></p>
+            <p class="dok-p"><?php echo "Email: " . $doktor['email']; ?></p>
         </div>
     <?php } ?>
-    <a href="nov-doktor.php">Unesi doktora</a>
+    <a id="dok-btn" href="nov-doktor.php">Unesi novog doktora</a>
 </body>
 </html>
