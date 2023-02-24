@@ -70,7 +70,7 @@ input {
     margin-bottom: 10px;
 }
 
-#dok-btn {
+.dok-button {
     padding: 5px;
     margin: 6px;
     color: #FFF;
@@ -102,7 +102,7 @@ label {
     margin-bottom: 8px;
 }
 
-.dugme:hover, #dok-btn:hover {
+.dugme:hover, .dok-button:hover {
     cursor: pointer;
     background-color: #17c54b;
 }
