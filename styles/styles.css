@@ -1,0 +1,19 @@
+p {
+    font-size: 14px;
+}
+
+#header1 {
+    background-color: #b34848;
+}
+
+h1, h2, h3, h4 {
+    color: #b34848;
+}
+
+a {
+    color: inherit;
+}
+
+a:hover {
+    color: inherit;
+}

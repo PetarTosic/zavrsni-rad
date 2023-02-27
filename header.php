@@ -1,5 +1,5 @@
 <header>
-    <div class="blog-masthead">
+    <div class="blog-masthead" id="header1">
         <div class="container">
             <nav class="nav">
                 <a class="nav-link active" href="#">Home</a>
