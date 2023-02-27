@@ -1,12 +1,19 @@
 <?php
     include("db.php");
     $id1 = $_GET['id'];
-    $sql = "SELECT * FROM posts WHERE id = 1";
+    $sql = "SELECT * FROM posts WHERE id = $id1";
     $statement = $connection->prepare($sql);
     // $statement->bindParam();
     $statement->execute();
     $statement->setFetchMode(PDO::FETCH_ASSOC);
     $post = $statement->fetch();
+
+    $sql2 = "SELECT * FROM comments WHERE post_id = $id1";
+    $statement = $connection->prepare($sql2);
+    // $statement->bindParam();
+    $statement->execute();
+    $statement->setFetchMode(PDO::FETCH_ASSOC);
+    $comments = $statement->fetchAll();
 ?>
 
 <!doctype html>
@@ -26,6 +33,7 @@
 
     <!-- Custom styles for this template -->
     <link href="styles/blog.css" rel="stylesheet">
+    <link href="styles/styles.css" rel="stylesheet">
 </head>
 
 <body>
@@ -44,8 +52,15 @@
                 <p class="blog-post-meta"><?php echo $post['created_at']; ?> by <a href="#"><?php echo $post['author']; ?></a></p>
 
                 <p><?php echo $post['body']; ?></p>
-            </div>/.blog-post
-
+            </div>
+            <ul style="list-style-type: none;">
+                <?php foreach($comments AS $comment) { ?>
+                    <li id="komentar">
+                        <p class="blog-post-meta">Comment by: <a href="#"><?php echo $comment['authors']; ?></a></p>
+                        <p><?php echo $comment['text'] ?></p>
+                    </li>
+                <?php } ?>
+            </ul>
 
             <nav class="blog-pagination">
                 <a class="btn btn-outline-primary" href="#">Older</a>

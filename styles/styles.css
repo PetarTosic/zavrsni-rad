@@ -17,3 +17,11 @@ a {
 a:hover {
     color: inherit;
 }
+
+#komentar {
+    border: 2px solid #b34848;
+    padding: 15px;
+    border-radius: 15px;
+    width: 30vw;
+    margin-top: 10px;
+}
