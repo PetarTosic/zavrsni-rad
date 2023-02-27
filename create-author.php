@@ -2,15 +2,14 @@
     include("db.php");
 
     if(isset($_POST['submit'])) {
-        $title = $_POST['title'];
-        $body = $_POST['body'];
-        $author = $_POST['author'];
-        if(empty($title) || empty($body) || empty($author)) {
+        $ime = $_POST['ime'];
+        $prezime = $_POST['prezime'];
+        $pol = $_POST['pol'];
+        if(empty($ime) || empty($prezime) || empty($pol)) {
             echo "Neki podaci nedostaju";
         } else {
-            $date_time = date('Y-m-d');
-            $sql = "INSERT INTO posts(title, body, author, created_at) 
-            VALUES('$title', '$body', '$author', '$date_time')";
+            $sql = "INSERT INTO author(ime, prezime, pol) 
+            VALUES('$ime', '$prezime', '$pol')";
             $statement = $connection->prepare($sql);
             $statement->execute();
 
@@ -48,12 +47,13 @@
     <div class="row">
 
         <div class="col-sm-8 blog-main">
-            <form action="create-post.php" method="post">
+            <form action="create-author.php" method="post">
             <ul class="form-style-1">
-                <li class="list">Author: <input type="author" name="author"></li>
-                <li class="list">Title: <input type="title" name="title"></li>
-                <li class="list">Body: <textarea name="body" rows="4" cols="18"></textarea>
-                <li class="list"><input type="submit" name="submit" class="submit" value="Create post"></li>
+                <li class="list">Ime: <input type="ime" name="ime"></li>
+                <li class="list">Prezime: <input type="prezime" name="prezime"></li>
+                <li class="list">Pol: <br><input type="radio" name="pol" id="pol" value="M">M
+                <input type="radio" name="pol" id="pol" value="F">F</li>
+                <li class="list"><input type="submit" name="submit" class="submit" value="Create author"></li>
             </ul>
 
 
