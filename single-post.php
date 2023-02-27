@@ -1,5 +1,12 @@
 <?php
     include("db.php");
+    $id1 = $_GET['id'];
+    $sql = "SELECT * FROM posts WHERE id = 1";
+    $statement = $connection->prepare($sql);
+    // $statement->bindParam();
+    $statement->execute();
+    $statement->setFetchMode(PDO::FETCH_ASSOC);
+    $post = $statement->fetch();
 ?>
 
 <!doctype html>
@@ -30,6 +37,14 @@
     <div class="row">
 
         <div class="col-sm-8 blog-main">
+        
+            <div class="blog-post">
+    
+                <h2 class="blog-post-title"><a href="single-post.php?id=<?php echo $post['id']?>"><?php echo $post['title']; ?></a></h2>
+                <p class="blog-post-meta"><?php echo $post['created_at']; ?> by <a href="#"><?php echo $post['author']; ?></a></p>
+
+                <p><?php echo $post['body']; ?></p>
+            </div>/.blog-post
 
 
             <nav class="blog-pagination">
