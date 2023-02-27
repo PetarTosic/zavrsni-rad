@@ -1,3 +1,7 @@
+<?php
+    include("db.php");
+?>
+
 <div class="blog-post">
                 <h2 class="blog-post-title"><a href="single-post.php">Sample blog post</a></h2>
                 <p class="blog-post-meta">January 1, 2014 by <a href="#">Mark</a></p>
