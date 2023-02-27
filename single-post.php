@@ -47,12 +47,12 @@
         <div class="col-sm-8 blog-main">
         
             <div class="blog-post">
-    
                 <h2 class="blog-post-title"><a href="single-post.php?id=<?php echo $post['id']?>"><?php echo $post['title']; ?></a></h2>
                 <p class="blog-post-meta"><?php echo $post['created_at']; ?> by <a href="#"><?php echo $post['author']; ?></a></p>
-
                 <p><?php echo $post['body']; ?></p>
             </div>
+
+            
             <ul style="list-style-type: none;">
                 <?php foreach($comments AS $comment) { ?>
                     <li id="komentar">

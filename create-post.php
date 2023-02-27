@@ -19,6 +19,7 @@
 
     <!-- Custom styles for this template -->
     <link href="styles/blog.css" rel="stylesheet">
+    <link href="styles/styles.css" rel="stylesheet">
 </head>
 
 <body>
@@ -30,6 +31,13 @@
     <div class="row">
 
         <div class="col-sm-8 blog-main">
+            <form action="create-post.php" method="post">
+            <ul class="form-style-1">
+                <li class="list">Author: <input type="author" name="author"></li>
+                <li class="list">Title: <input type="title" name="title"></li>
+                <li class="list">Body: <textarea name="body" rows="4" cols="18"></textarea>
+                <li class="list"><input type="submit" name="submit" class="submit" value="Create post"></li>
+            </ul>
 
 
             <nav class="blog-pagination">
