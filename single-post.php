@@ -1,7 +1,7 @@
 <?php
     include("db.php");
     $id1 = $_GET['id'];
-    $sql = "SELECT * FROM posts WHERE id = $id1";
+    $sql = "SELECT a.ime, a.prezime, a.pol, p.* FROM authors a INNER JOIN posts p ON a.id = p.author_id WHERE p.id = $id1";
     $statement = $connection->prepare($sql);
     // $statement->bindParam();
     $statement->execute();
@@ -45,10 +45,16 @@
     <div class="row">
 
         <div class="col-sm-8 blog-main">
-        
+            <?php 
+                if($post['pol'] === 'M'){
+                    $boja = 'rgb(79, 79, 255)';
+                }else {
+                    $boja = 'rgb(255, 131, 152)';
+                };
+            ?>
             <div class="blog-post">
                 <h2 class="blog-post-title"><a href="single-post.php?id=<?php echo $post['id']?>"><?php echo $post['title']; ?></a></h2>
-                <p class="blog-post-meta"><?php echo $post['created_at']; ?> by <a href="#"><?php echo $post['author']; ?></a></p>
+                <p class="blog-post-meta"><?php echo $post['created_at']; ?> by <a href="#" style="color: <?php echo $boja; ?>"><?php echo $post['ime'] . ' ' . $post['prezime']; ?></a></p>
                 <p><?php echo $post['body']; ?></p>
             </div>
 

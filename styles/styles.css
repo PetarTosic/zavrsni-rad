@@ -40,6 +40,13 @@ a:hover {
 	-webkit-box-shadow:none;
 }
 
+.musko {
+	color: rgb(79, 79, 255);
+}
+
+.zensko {
+	color: rgb(255, 131, 152);
+}
 
 .form-style-1 {
 	margin:10px auto;

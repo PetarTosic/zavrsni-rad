@@ -2,9 +2,9 @@
     <div class="blog-masthead" id="header1">
         <div class="container">
             <nav class="nav">
-                <a class="nav-link active" href="index.php">Home</a>
-                <a class="nav-link" href="create-post.php">Create post</a>
-                <a class="nav-link" href="create-author.php">Create author</a>
+                <a class="nav-link <?php echo $active1; ?>" href="index.php">Home</a>
+                <a class="nav-link <?php echo $active2; ?>" href="create-post2.php">Create post</a>
+                <a class="nav-link <?php echo $active3; ?>" href="create-author.php">Create author</a>
                 <a class="nav-link" href="#">New hires</a>
                 <a class="nav-link" href="#">About</a>
             </nav>

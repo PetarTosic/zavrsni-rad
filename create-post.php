@@ -1,16 +1,18 @@
 <?php
     include("db.php");
+    $id1 = $_GET['id'];
 
     if(isset($_POST['submit'])) {
         $title = $_POST['title'];
         $body = $_POST['body'];
         $author = $_POST['author'];
-        if(empty($title) || empty($body) || empty($author)) {
+        if(empty($title) || empty($body)) {
             echo "Neki podaci nedostaju";
         } else {
+            
             $date_time = date('Y-m-d');
-            $sql = "INSERT INTO posts(title, body, author, created_at) 
-            VALUES('$title', '$body', '$author', '$date_time')";
+            $sql = "INSERT INTO posts(title, body, created_at, author_id) 
+            VALUES('$title', '$body', '$date_time', '$author')";
             $statement = $connection->prepare($sql);
             $statement->execute();
 
@@ -44,13 +46,21 @@
 <?php include('header.php'); ?> 
 
 <main role="main" class="container">
+    <?php 
+        $sql2 = "SELECT * FROM authors WHERE id = $id1";
+        $statement = $connection->prepare($sql2);
+        // $statement->bindParam();
+        $statement->execute();
+        $statement->setFetchMode(PDO::FETCH_ASSOC);
+        $author = $statement->fetch();
+    ?>
 
     <div class="row">
 
         <div class="col-sm-8 blog-main">
             <form action="create-post.php" method="post">
             <ul class="form-style-1">
-                <li class="list">Author: <input type="author" name="author"></li>
+                <li class="list"><?php echo $author['ime'] . ' ' . $author['prezime'];?><input type="hidden" name="author" value="<?php echo $author['id'];?>" readonly></li>
                 <li class="list">Title: <input type="title" name="title"></li>
                 <li class="list">Body: <textarea name="body" rows="4" cols="18"></textarea>
                 <li class="list"><input type="submit" name="submit" class="submit" value="Create post"></li>

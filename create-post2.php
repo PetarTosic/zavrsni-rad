@@ -1,21 +1,11 @@
 <?php
     include("db.php");
-
-    if(isset($_POST['submit'])) {
-        $ime = $_POST['ime'];
-        $prezime = $_POST['prezime'];
-        $pol = $_POST['pol'];
-        if(empty($ime) || empty($prezime) || empty($pol)) {
-            echo "Neki podaci nedostaju";
-        } else {
-            $sql = "INSERT INTO authors(ime, prezime, pol) 
-            VALUES('$ime', '$prezime', '$pol')";
-            $statement = $connection->prepare($sql);
-            $statement->execute();
-
-            header('Location: ./index.php');
-        }
-    }
+    $sql = "SELECT * FROM authors ORDER BY id DESC";
+    $statement = $connection->prepare($sql);
+    // $statement->bindParam();
+    $statement->execute();
+    $statement->setFetchMode(PDO::FETCH_ASSOC);
+    $authors = $statement->fetchAll();
 ?>
 
 <!doctype html>
@@ -28,7 +18,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../../../favicon.ico">
 
-    <title>Vivify Blog</title>
+    <title>Select author</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
@@ -39,7 +29,7 @@
 </head>
 
 <body>
-<?php $active3 = 'active'; ?>
+<?php $active2 = 'active'; ?>
 <?php include('header.php'); ?> 
 
 <main role="main" class="container">
@@ -47,15 +37,20 @@
     <div class="row">
 
         <div class="col-sm-8 blog-main">
-            <form action="create-author.php" method="post">
-            <ul class="form-style-1">
-                <li class="list">Ime: <input type="ime" name="ime"></li>
-                <li class="list">Prezime: <input type="prezime" name="prezime"></li>
-                <li class="list">Pol: <br><input type="radio" name="pol" id="pol" value="M">M
-                <input type="radio" name="pol" id="pol" value="F">F</li>
-                <li class="list"><input type="submit" name="submit" class="submit" value="Create author"></li>
-            </ul>
 
+            <?php foreach($authors AS $author) { 
+                if($author['pol'] === 'M') {
+                    $boja = 'rgb(79, 79, 255)';
+                }else {
+                    $boja = 'rgb(255, 131, 152)';
+                };
+                ?>
+                <div class="blog-post">
+                    <h2 class="blog-post-title"><a href="create-post.php?id=<?php echo $author['id']?>" style="color: <?php echo $boja; ?>"><?php echo $author['ime'] . ' ' . $author['prezime']; ?></a></h2>
+
+                </div>
+            <?php }?>
+            
 
             <nav class="blog-pagination">
                 <a class="btn btn-outline-primary" href="#">Older</a>
