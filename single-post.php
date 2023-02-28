@@ -58,7 +58,6 @@
                 <p><?php echo $post['body']; ?></p>
             </div>
 
-            
             <ul style="list-style-type: none;">
                 <?php foreach($comments AS $comment) { ?>
                     <li id="komentar">
