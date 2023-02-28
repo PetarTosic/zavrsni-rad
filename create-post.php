@@ -62,7 +62,13 @@
                 <li class="list">Body: <textarea name="body" rows="4" cols="18"></textarea>
                 <select name="author">
                 <?php foreach($authors as $author) { 
-                        echo'<option value="' . $author["id"] . '">' .           
+                        if($author['pol'] === 'M'){
+                            $boja = 'rgb(79, 79, 255)';
+                        }else {
+                            $boja = 'rgb(255, 131, 152)';
+                        };
+                        
+                        echo '<option value="' . $author["id"] . '" style="color: ' . $boja . '" >' .           
                         $author["ime"] . ' ' . $author["prezime"] . '</option>';
                         }
                 ?>

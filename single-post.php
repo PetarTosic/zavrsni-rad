@@ -8,12 +8,12 @@
     $statement->setFetchMode(PDO::FETCH_ASSOC);
     $post = $statement->fetch();
 
-    $sql2 = "SELECT * FROM comments WHERE post_id = $id1";
-    $statement = $connection->prepare($sql2);
-    // $statement->bindParam();
-    $statement->execute();
-    $statement->setFetchMode(PDO::FETCH_ASSOC);
-    $comments = $statement->fetchAll();
+    // $sql2 = "SELECT * FROM comments WHERE post_id = $id1";
+    // $statement = $connection->prepare($sql2);
+    // // $statement->bindParam();
+    // $statement->execute();
+    // $statement->setFetchMode(PDO::FETCH_ASSOC);
+    // $comments = $statement->fetchAll();
 ?>
 
 <!doctype html>
@@ -59,12 +59,7 @@
             </div>
 
             <ul style="list-style-type: none;">
-                <?php foreach($comments AS $comment) { ?>
-                    <li id="komentar">
-                        <p class="blog-post-meta">Comment by: <a href="#"><?php echo $comment['authors']; ?></a></p>
-                        <p><?php echo $comment['text'] ?></p>
-                    </li>
-                <?php } ?>
+                <?php include('comments.php'); ?>
             </ul>
 
             <nav class="blog-pagination">
