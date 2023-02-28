@@ -3,7 +3,7 @@
         <div class="container">
             <nav class="nav">
                 <a class="nav-link <?php echo $active1; ?>" href="index.php">Home</a>
-                <a class="nav-link <?php echo $active2; ?>" href="create-post2.php">Create post</a>
+                <a class="nav-link <?php echo $active2; ?>" href="create-post.php">Create post</a>
                 <a class="nav-link <?php echo $active3; ?>" href="create-author.php">Create author</a>
             </nav>
         </div>
